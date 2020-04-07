@@ -75,14 +75,7 @@
             document.getElementsByClassName("add")[0].pattern = feltetelek;
             document.getElementsByClassName("add")[1].pattern = feltetelek;
         }
-        //Ez a Módosítás / Mentés gombra kattintva lép érvénybe.
-        //Leveszi a disable attribútumot a "Jelenleg ezt a sorszámú feladatot szerkeszted:" inputjáról.
-        //Ez azért szükséges, mert a disabled input nem küldi el POST üzenetként az input értékét. (VALUE)
-        //Ami pedig kell, hogy beazonosítsuk, hogy mely feladatot szerkeszti a felhasználó.
-        //Disable pedig azért szükséged, hogy ne tudjon beírni olyan azonosítót a Módosítás fülnél, ami nem is létezik.
-        function removedisable() {
-            document.getElementById("edit_jelenleg").removeAttribute("disabled");
-        }
+
     </script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -206,7 +199,7 @@
                                 @csrf
                                 <label>Jelenleg ezt a sorszámú feladatot szerkeszted:</label>
                                 <br>
-                                <input id="edit_jelenleg" name="azonosito" disabled required>
+                                <input id="edit_jelenleg" name="azonosito" readonly required>
                                 <label>Ügyintéző neve</label>
                                 <input id="edit_nevek" class="add" list="nevek" name="nevek" pattern="" required>
                                 <datalist id="nevek">
@@ -217,7 +210,7 @@
                                 <label>Leírás</label>
                                 <textarea id="edit_leiras" name="leirass" required></textarea>
 
-                                <button onclick="removedisable();" type="submit">Mentés</button>
+                                <button type="submit">Mentés</button>
 
                                 <!-- Keresés form -->
                             </form>
